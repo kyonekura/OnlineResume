@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style.css">
+    <!--    <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+    <title>Online Resume</title>
+</head>
+
+<body>
+
+
+    <div class="MainScreen">
+        <div class="item">
+            <img src="./images/haikei.png" alt="" class="background">
+
+        </div>
+        <img src="./images/page1.png" alt="" class="main-haikei">
+        <div class="cursor"></div>
+
+        <div class="follower"><img src="./images/cercle.png" alt="" class="cercle"></div>
+
+        
+    </div>
+    <script type="text/javascript">
+        var
+            cursor = $(".cursor"),
+            follower = $(".follower"),
+            cWidth = 8, //カーソルの大きさ
+            fWidth = 300, //フォロワーの大きさ
+            delay = 10, //数字を大きくするとフォロワーがより遅れて来る
+            mouseX = 0, //マウスのX座標
+            mouseY = 0, //マウスのY座標
+            posX = 0, //フォロワーのX座標
+            posY = 0; //フォロワーのX座標
+
+        //カーソルの遅延アニメーション
+        //ほんの少ーーーしだけ遅延させる 0.001秒
+        TweenMax.to({}, .001, {
+            repeat: -1,
+            onRepeat: function() {
+                posX += (mouseX - posX) / delay;
+                posY += (mouseY - posY) / delay;
+
+                TweenMax.set(follower, {
+                    css: {
+                        left: posX - (fWidth / 2),
+                        top: posY - (fWidth / 2)
+                    }
+                });
+
+                TweenMax.set(cursor, {
+                    css: {
+                        left: mouseX - (cWidth / 2),
+                        top: mouseY - (cWidth / 2)
+                    }
+                });
+            }
+        });
+
+        //マウス座標を取得
+        $(document).on("mousemove", function(e) {
+            mouseX = e.pageX;
+            mouseY = e.pageY;
+        });
+
+        $("a").on({
+            "mouseenter": function() {
+                cursor.addClass("is-active");
+                follower.addClass("is-active");
+            },
+            "mouseleave": function() {
+                cursor.removeClass("is-active");
+                follower.removeClass("is-active");
+            }
+        });
+    </script>
+</body>
+
+</html>
