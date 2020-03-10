@@ -3,17 +3,8 @@
     margin: 0;
 }
 
-.background{
-    position: relative;
-    width: 100vw;
-    
-}
 
-.background{
-    width: 100vw;
-
-}
-
+/*
 .main-haikei {
     position: absolute;
     top: 0;
@@ -22,13 +13,41 @@
     
   
 }
-
+*/
 
 body {
-  position: relative;
-  cursor: none; 
+    background-image: url(./images/haikei.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: none;
+
+    padding: 0;
+    margin: 0;
 }
- 
+
+.logo {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.circle {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-image: url(./images/haikei.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /*　background-size: 100px 100px;*/
+    clip-path: ellipse(150px 150px at 10% 10%);
+}
+
+
+/*
 .cursor,
 .follower {
   border-radius: 50%;
@@ -49,12 +68,13 @@ body {
 .follower {
   z-index: 1000; 
   -webkit-background-clip: .follower;
-    
+  background-image: url(./images/haikei.png);
+  clip-path: ellipse(150px 150px at 10% 10%);
 }
 
  
 .cercle{
     width: 300px;
     height: 300px;
-
-}
+    
+}*/
